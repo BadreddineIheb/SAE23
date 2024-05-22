@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Formulaire de mise à jour
+{% endblock %}
+
+{% block content %}
+    <h1>Saisie de la mise a jour des notes :</h1>
+    <form method="post" action="/gdnapp/updatetraitementnotes/{{id}}/">
+
+          {% csrf_token %}
+          {{form.as_ul}}
+    <input type="submit" value="envoyez les données"/>
+    </form>
+
+{% endblock %}

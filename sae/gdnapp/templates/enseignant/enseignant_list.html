@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h2>Enseignants</h2>
+  <a href="{% url 'enseignant_create' %}">Ajouter un enseignant</a>
+  <ul>
+    {% for enseignant in enseignants %}
+      <li>
+        {{ enseignant.nom }} {{ enseignant.prenom }}
+        <a href="{% url 'enseignant_update' enseignant.pk %}">Modifier</a>
+        <form action="{% url 'enseignant_list' %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <input type="hidden" name="enseignant_id" value="{{ enseignant.pk }}">
+          <button type="submit">Supprimer</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

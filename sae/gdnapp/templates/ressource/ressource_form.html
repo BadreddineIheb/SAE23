@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Ressource</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer</button>
+  </form>
+  <a href="/gdnapp/ressource/">Retouner</a>
+{% endblock %}

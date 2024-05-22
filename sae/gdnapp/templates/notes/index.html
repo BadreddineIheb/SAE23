@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'main.html' %}
 
-</body>
-</html>
+{% block title %}
+Accueil
+{% endblock %}
+
+{% block content %}
+    <h1>Voici toutes les notes de cette examen</h1>
+<a href="/gdnapp/">Retour au menu</a>
+<ol>
+    {% for p in liste %}
+    <li>{{p}} <br> <a href="/gdnapp/updatenotes/{{p.id}}">mise à jour</a>&nbsp <a href="/gdnapp/delete/{{p.id}}">supprimer</a></li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

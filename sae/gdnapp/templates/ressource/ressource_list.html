@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h2>Ressources</h2>
+  <a href="{% url 'ressource_create' %}">Ajouter une ressource</a>
+  <ul>
+    {% for ressource in ressources %}
+      <li>
+        {{ ressource.nom }} - {{ ressource.descriptif }} (Coefficient: {{ ressource.coefficient }})
+        <a href="{% url 'ressource_update' ressource.pk %}">Modifier</a>
+        <form action="{% url 'ressource_list' %}" method="post" style="display:inline;">
+          {% csrf_token %}
+          <input type="hidden" name="ressource_id" value="{{ ressource.pk }}">
+          <button type="submit">Supprimer</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

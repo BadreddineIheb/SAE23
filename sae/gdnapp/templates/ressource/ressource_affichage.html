@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h2>Ressource Details</h2>
+  <p><strong>Code Ressource:</strong> {{ ressource.code }}</p>
+  <p><strong>Nom:</strong> {{ ressource.nom }}</p>
+  <p><strong>Descriptif:</strong> {{ ressource.descriptif }}</p>
+  <p><strong>Coefficient:</strong> {{ ressource.coefficient }}</p>
+  <a href="/gdnapp/ressource/">Retourner</a>
+{% endblock %}

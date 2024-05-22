@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Formulaire de saisie
+{% endblock %}
+
+{% block content %}
+    <h1>Saisie d'une nouvelle notes</h1>
+    <form method="post" action="/gdnapp/notes/traitement/">
+
+          {% csrf_token %}
+          {{form.as_ul}}
+    <input type="submit" value="envoyez les données"/>
+    </form>
+
+{% endblock %}
