@@ -5,9 +5,9 @@ Formulaire de saisie
 {% endblock %}
 
 {% block content %}
-<form method="post" action="/etudiant/affichage/">
+<form method="post" action="/gdnapp/etudiant/affichage/">
 {% csrf_token %}
 {{ form.as_ul }}
-<input type="submit" value="envoyer"\>
+<input type="submit" value="envoyer">
 </form>
 {% endblock %}

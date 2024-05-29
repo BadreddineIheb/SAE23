@@ -6,10 +6,11 @@ Accueil
 
 {% block content %}
     <h1>Voici toutes les notes de cette examen</h1>
+<a href="/gdnapp/notes/ajout/">Ajouter une note</a>
 <a href="/gdnapp/">Retour au menu</a>
 <ol>
     {% for p in liste %}
-    <li>{{p}} <br> <a href="/gdnapp/updatenotes/{{p.id}}">mise à jour</a>&nbsp <a href="/gdnapp/delete/{{p.id}}">supprimer</a></li>
+    <li>{{p}} <br> <a href="/gdnapp/notes/update/{{p.id}}">mise à jour</a>&nbsp <a href="/gdnapp/notes/delete/{{p.id}}">supprimer</a></li>
     {% endfor %}
 </ol>
 

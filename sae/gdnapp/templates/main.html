@@ -8,6 +8,25 @@
     <link rel="stylesheet" type="text/css" href="{%static 'gdnapp/index.css' %}">
 </head>
 <body>
+
+
+<aside id="sidebar"></aside>
+{% block sidebar %}
+<nav>
+    <a href ="/gdnapp/etudiant/affichage"> Etudiant</a>
+    <a href ="/gdnapp/UE/affichage"> UE</a>
+    <a href ="/gdnapp/ressource/ressource_affichage"> Ressources</a>
+    <a href ="/gdnapp/enseignant/enseignant_affichage"> Enseignants</a>
+    <a href ="/gdnapp/examen/index"> Examen</a>
+    <a href ="/gdnapp/notes/index"> Notes</a>
+</nav>
+
+{% endblock %}
+</aside>
+
+
+
+
 {% block content %}
 contenu
 {% endblock %}

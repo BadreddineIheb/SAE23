@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h2>{{ enseignant.nom }} {{ enseignant.prenom }}</h2>
+  <p>Nom: {{ enseignant.nom }}</p>
+  <p>Prénom: {{ enseignant.prenom }}</p>
+  <a href="/gdnapp/enseignant/">Back to Enseignants</a>
+{% endblock %}

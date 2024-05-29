@@ -5,10 +5,10 @@ from . import models
 def ajout(request):
     if request.method == "POST":
         form = EtudForm(request)
-        return render(request, 'etudiant/ajout.html'), {'form' : form}
+        return render(request, 'etudiant/ajout.html', {'form': form})
     else :
         form = EtudForm()
-        return render(request, 'etudiant/ajout.html'), {'form' : form}
+        return render(request, 'etudiant/ajout.html', {'form' : form})
 
 def affichage(request):
     lform = EtudForm(request.POST)
