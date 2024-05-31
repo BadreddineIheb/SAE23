@@ -36,18 +36,17 @@ class UE(models.Model) :
 # model de Notes
 
 class Notes(models.Model):
-    examen = models.CharField(max_length=100)
     etudiant = models.CharField(max_length=100)
     note = models.FloatField(blank=False)
     appreciation = models.TextField(null=True, blank=True)
-    #continent= models.ForeignKey("continent", on_delete=models.CASCADE, default=None)
+    examen = models.ForeignKey("examen", on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         chaine = f"Lors de l'examen {self.examen} l'étudiant {self.etudiant} a eu la note de {self.note} avec l'appréciation : {self.appreciation}"
         return chaine
 
     def dico(self):
-        return {"examen":self.examen, "etudiant":self.etudiant, "note":self.note, "appreciation":self.appreciation} #"continent":self.continent}
+        return {"examen":self.examen, "etudiant":self.etudiant, "note":self.note, "appreciation":self.appreciation}
 
 
 # model des ressources
@@ -63,24 +62,26 @@ class Ressources(models.Model):
 
 
 class Enseignants(models.Model):
+    id_examen = models.IntegerField(null=False, blank=True)
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.nom} {self.prenom}"
 
+    def dico(self):
+        return {"id":self.id_examen, "nom":self.prenom, "date":self.prenom}
 # model de examen
 
 class Examen(models.Model):
-    id_examen = models.IntegerField(blank=False)
+    enseignant = models.ForeignKey("enseignants", on_delete=models.CASCADE, default=None, blank =True)
     titre = models.CharField(max_length=100)
     date = models.DateField(blank=True, null=True)
     coefficient = models.FloatField(blank=False)
-    #continent= models.ForeignKey("continent", on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        chaine = f"L'examen avec l'id {self.id_examen} et avec le titre {self.titre} en date de  {self.date} a un coefficient de {self.coefficient}"
+        chaine = f"L'examen avec l'id {self.enseignant} et avec le titre {self.titre} en date de  {self.date} a un coefficient de {self.coefficient}"
         return chaine
 
     def dico(self):
-        return {"id":self.id_examen, "titre":self.titre, "date":self.date, "coefficient":self.coefficient} #"continent":self.continent}
+        return {"id":self.enseignant, "titre":self.titre, "date":self.date, "coefficient":self.coefficient} #"continent":self.continent}

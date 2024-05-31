@@ -6,7 +6,7 @@ Ajouter Ressource
 
 {% block content %}
     <h1>Ajouter une Ressource</h1>
-    <form method="post" action="/gdnapp/ressources/traitement/">
+    <form method="post" action="/gdnapp/ressource/traitement/">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Ajouter</button>

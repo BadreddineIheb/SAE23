@@ -38,9 +38,9 @@ class NotesForm(ModelForm):
 class ExamenForm(ModelForm):
     class Meta :
         model = models.Examen
-        fields = ('id_examen', 'titre', 'date', 'coefficient')
+        fields = ( 'enseignant','titre', 'date', 'coefficient')
         labels = {
-            'id_examen': _('id'),
+            'enseignant': _('Enseignant'),
             'titre': _('titre'),
             'date': _('date'),
             'coefficient': _('Coefficient')
@@ -54,8 +54,9 @@ class RessourcesForm(ModelForm):
 class EnseignantsForm(ModelForm):
     class Meta:
         model = models.Enseignants
-        fields = ('nom', 'prenom')
+        fields = ('id_examen','nom', 'prenom')
         labels = {
+            'id_examen': _('id'),
             'nom': 'Nom',
             'prenom': 'Prénom'
         }

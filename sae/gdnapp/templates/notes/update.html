@@ -6,7 +6,7 @@ Formulaire de mise à jour
 
 {% block content %}
     <h1>Saisie de la mise a jour des notes :</h1>
-    <form method="post" action="/gdnapp/notes/updatetraitement/">
+    <form method="post" action="/gdnapp/notes/updatetraitement/{{id}}/">
 
           {% csrf_token %}
           {{form.as_ul}}

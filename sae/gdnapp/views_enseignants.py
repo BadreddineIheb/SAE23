@@ -1,43 +1,45 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .forms import EnseignantsForm
-from .models import Enseignants
+from .import models
+
 
 def index(request):
-    liste = list(Enseignants.objects.all())
-    return render(request, "enseignants/index.html", {"liste": liste})
+    liste = list(models.Enseignants.objects.all())
+    return render(request, "enseignant/index.html", {"liste": liste})
 
 def ajout(request):
     if request.method == "POST":
-        form = EnseignantsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/gdnapp/enseignants/index/")
-        return render(request, "enseignants/ajout.html", {"form": form})
+        form = EnseignantsForm(request)
+        return render(request, "enseignant/ajout.html", {"form":form })
     else:
         form = EnseignantsForm()
-        return render(request, "enseignants/ajout.html", {"form": form})
+        return render(request, "enseignant/ajout.html", {"form": form})
 
 def update(request, id):
-    item = Enseignants.objects.get(pk=id)
-    form = EnseignantsForm(instance=item)
-    return render(request, "enseignants/update.html", {"form": form, "id": id})
+    enseignant = models.Enseignants.objects.get(pk=id)
+    form = EnseignantsForm(enseignant.dico())
+    return render(request, "enseignant/update.html", {"form": form, "id": id})
 
 def delete(request, id):
-    item = Enseignants.objects.get(pk=id)
-    item.delete()
-    return HttpResponseRedirect("/gdnapp/enseignants/index/")
+    enseignant = models.Enseignants.objects.get(pk=id)
+    enseignant.delete()
+    return HttpResponseRedirect("/gdnapp/enseignant/index/")
+
 
 def traitement(request):
-    form = EnseignantsForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/gdnapp/enseignants/index/")
-    return render(request, "enseignants/ajout.html", {"form": form})
+    eform = EnseignantsForm(request.POST)
+    if eform.is_valid():
+        enseignant= eform.save()
+        return HttpResponseRedirect("/gdnapp/enseignant/index/")
+    else:
+        return render(request,"enseignant/ajout.html",{"form":eform})
 
-def updatetraitement(request, id):
-    item = Enseignants.objects.get(pk=id)
-    form = EnseignantsForm(request.POST, instance=item)
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/gdnapp/enseignants/index/")
-    return render(request, "enseignants/update.html", {"form": form, "id": id})
+def updatetraitement(request,id):
+    eform = EnseignantsForm(request.POST)
+    if eform.is_valid():
+        enseignant = eform.save(commit=False)
+        enseignant.id = id
+        enseignant.save()
+        return HttpResponseRedirect("/gdnapp/enseignant/index/")
+    else:
+        return render(request,"enseignant/ajout.html",{"form":eform,"id": id})

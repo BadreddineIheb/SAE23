@@ -6,12 +6,12 @@ Accueil Ressources
 
 {% block content %}
     <h1>Liste des Ressources</h1>
-    <a href="/gdnapp/ressources/ajout/">Ajouter une ressource</a>
+    <a href="/gdnapp/ressource/ajout/">Ajouter une ressource</a>
     <ol>
         {% for ressource in liste %}
             <li>{{ ressource.code_ressource }} - {{ ressource.nom }} <br>
-                <a href="/gdnapp/ressources/update/{{ ressource.id }}">Mise à jour</a>
-                <a href="/gdnapp/ressources/delete/{{ ressource.id }}">Supprimer</a>
+                <a href="/gdnapp/ressource/update/{{ ressource.id }}">Mise à jour</a>
+                <a href="/gdnapp/ressource/delete/{{ ressource.id }}">Supprimer</a>
             </li>
         {% endfor %}
     </ol>

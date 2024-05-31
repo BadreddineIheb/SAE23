@@ -23,14 +23,14 @@ def update(request, id):
 def delete(request, id):
     notes = models.Examen.objects.get(pk=id)
     notes.delete()
-    return HttpResponseRedirect("/gdnapp/index/")
+    return HttpResponseRedirect("/gdnapp/examen/index/")
 
 
 def traitement(request):
     nform = ExamenForm(request.POST)
     if nform.is_valid():
         examen = nform.save()
-        return render(request, 'examen/index.html', {'examen' : examen})
+        return HttpResponseRedirect("/gdnapp/examen/index/")
     else:
         return render(request,"examen/ajout.html",{"form":nform})
 
@@ -40,7 +40,7 @@ def updatetraitement(request,id):
         examen = nform.save(commit=False)
         examen.id = id
         examen.save()
-        return HttpResponseRedirect("/gdnapp/index/")
+        return HttpResponseRedirect("/gdnapp/examen/index/")
     else:
         return render(request,"examen/ajout.html",{"form":nform,"id": id})
 

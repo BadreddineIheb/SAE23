@@ -1,18 +1,17 @@
 {% extends 'main.html' %}
 
 {% block title %}
-Accueil Enseignants
+Accueil
 {% endblock %}
 
 {% block content %}
-    <h1>Liste des Enseignants</h1>
-    <a href="{% url 'enseignants_ajout' %}">Ajouter un enseignant</a>
-    <ol>
-        {% for enseignant in liste %}
-            <li>{{ enseignant.nom }} {{ enseignant.prenom }} <br>
-                <a href="{% url 'enseignants_update' enseignant.id %}">Mise à jour</a>
-                <a href="{% url 'enseignants_delete' enseignant.id %}">Supprimer</a>
-            </li>
-        {% endfor %}
-    </ol>
+    <h1>Voici toutes les enseignants</h1>
+<a href="/gdnapp/enseignant/ajout/">Ajouter un examen</a>
+<a href="/gdnapp/">Retour au menu</a>
+<ol>
+    {% for l in liste %}
+    <li>{{l}} <br><br><a href="/gdnapp/enseignant/update/{{l.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/enseignant/delete/{{l.id}}/">supprimer</a></li>
+    {% endfor %}
+</ol>
+
 {% endblock %}

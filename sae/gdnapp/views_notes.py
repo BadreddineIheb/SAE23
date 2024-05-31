@@ -8,9 +8,9 @@ def index(request):
     return render(request, "notes/index.html", {"liste": liste})
 
 def ajout(request):
-    if request.method =="POST":
+    if request.method == "POST":
         form = NotesForm(request)
-        return render(request, "notes/ajout.html", {"form":form})
+        return render(request, "notes/ajout.html", {"form":form })
     else:
         form = NotesForm()
         return render(request, "notes/ajout.html", {"form": form})
@@ -23,14 +23,14 @@ def update(request, id):
 def delete(request, id):
     notes = models.Notes.objects.get(pk=id)
     notes.delete()
-    return HttpResponseRedirect("/gdnapp/index/")
+    return HttpResponseRedirect("/gdnapp/notes/index/")
 
 
 def traitement(request):
     nform = NotesForm(request.POST)
     if nform.is_valid():
-        notes = nform.save()
-        return render(request, 'notes/index.html', {'notes' : notes})
+        notes= nform.save()
+        return HttpResponseRedirect("/gdnapp/notes/index/")
     else:
         return render(request,"notes/ajout.html",{"form":nform})
 
@@ -40,7 +40,7 @@ def updatetraitement(request,id):
         notes = nform.save(commit=False)
         notes.id = id
         notes.save()
-        return HttpResponseRedirect("/gdnapp/index/")
+        return HttpResponseRedirect("/gdnapp/notes/index/")
     else:
         return render(request,"notes/ajout.html",{"form":nform,"id": id})
 
