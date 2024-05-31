@@ -1,43 +1,45 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect
+from .forms import RessourcesForm
+from .models import Ressources
 
-from .forms import RessourceForm
-from .models import Ressource
+def index(request):
+    liste = list(Ressources.objects.all())
+    return render(request, "ressources/index.html", {"liste": liste})
 
-
-def ressource_list(request):
-    if request.method == 'POST':
-        ressource = get_object_or_404(Ressource, id=request.POST.get('ressource_id'))
-        ressource.delete()
-        return render(request, 'ressource/ressource_form.html', {'ressource': ressource})
-
-    ressources = Ressource.objects.all()
-    return render(request, 'ressource/ressource_list.html', {'ressources': ressources})
-
-
-def ressource_create(request):
-    if request.method == 'POST':
-        form = RessourceForm(request.POST)
+def ajout(request):
+    if request.method == "POST":
+        form = RessourcesForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'ressource/ressource_list.html', {'form': form})
+            return HttpResponseRedirect("/gdnapp/ressources/index/")
     else:
-        form = RessourceForm()
+        form = RessourcesForm()
+    return render(request, "ressources/ajout.html", {"form": form})
 
-    return render(request, 'ressource/ressource_form.html', {'form': form})
+def update(request, id):
+    ressource = Ressources.objects.get(pk=id)
+    form = RessourcesForm(instance=ressource)
+    return render(request, "ressources/update.html", {"form": form, "id": id})
 
+def delete(request, id):
+    ressource = Ressources.objects.get(pk=id)
+    ressource.delete()
+    return HttpResponseRedirect("/gdnapp/ressources/index/")
 
-def ressource_update(request, id):
-    ressource = get_object_or_404(Ressource, id=id)
-    if request.method == 'POST':
-        form = RessourceForm(request.POST, instance=ressource)
+def traitement(request):
+    if request.method == "POST":
+        form = RessourcesForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'ressource/ressource_list.html', {'form': form})
+            return HttpResponseRedirect("/gdnapp/ressources/index/")
     else:
-        form = RessourceForm(instance=ressource)
-    return render(request, 'ressource/ressource_form.html', {'form': form})
+        form = RessourcesForm()
+    return render(request, "ressources/ajout.html", {"form": form})
 
-
-def ressource_affichage(request, pk):
-    ressource = get_object_or_404(Ressource, pk=pk)
-    return render(request, 'ressource/ressource_affichage.html', {'ressource': ressource})
+def updatetraitement(request, id):
+    ressource = Ressources.objects.get(pk=id)
+    form = RessourcesForm(request.POST, instance=ressource)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/gdnapp/ressources/index/")
+    return render(request, "ressources/update.html", {"form": form, "id": id})

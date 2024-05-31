@@ -46,12 +46,16 @@ class ExamenForm(ModelForm):
             'coefficient': _('Coefficient')
         }
 
-class RessourceForm(ModelForm):
+class RessourcesForm(ModelForm):
     class Meta:
-        model = models.Ressource
-        fields = ('code_ressource','nom', 'descriptif', 'coefficient')
-class EnseignantForm(ModelForm):
-    class Meta:
-        model = models.Enseignant
-        fields = ('id','nom', 'prenom')
+        model = models.Ressources
+        fields = ('code_ressource', 'nom', 'descriptif', 'coefficient')
 
+class EnseignantsForm(ModelForm):
+    class Meta:
+        model = models.Enseignants
+        fields = ('nom', 'prenom')
+        labels = {
+            'nom': 'Nom',
+            'prenom': 'Prénom'
+        }

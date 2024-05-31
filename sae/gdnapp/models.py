@@ -51,26 +51,25 @@ class Notes(models.Model):
 
 
 # model des ressources
-class Ressource(models.Model):
-    objects = None
-    code_ressource = models.IntegerField(blank=False)
-    nom = models.CharField(max_length=200)
-    descriptif = models.TextField(null= True, blank=True)
-    coefficient = models.FloatField()
+class Ressources(models.Model):
+    code_ressource = models.CharField(max_length=100)
+    nom = models.CharField(max_length=100)
+    descriptif = models.TextField(null=True, blank=True)
+    coefficient = models.FloatField(blank=False)
 
     def __str__(self):
-        return self.nom
+        return f"{self.code_ressource} - {self.nom}"
 
-class Enseignant(models.Model):
-    objects = None
-    id = models.IntegerField(primary_key=True)
+
+
+class Enseignants(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.nom} {self.prenom}'
+        return f"{self.nom} {self.prenom}"
 
-# model de exmen
+# model de examen
 
 class Examen(models.Model):
     id_examen = models.IntegerField(blank=False)

@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Modifier Ressource
+{% endblock %}
+
+{% block content %}
+    <h1>Modifier Ressource</h1>
+    <form method="post" action="/gdnapp/ressources/updatetraitement/{{ id }}/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Modifier</button>
+    </form>
+{% endblock %}

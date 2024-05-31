@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Modifier Enseignant
+{% endblock %}
+
+{% block content %}
+    <h1>Modifier Enseignant</h1>
+    <form method="post" action="/gdnapp/enseignants/updatetraitement/{{ id }}/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Modifier</button>
+    </form>
+{% endblock %}

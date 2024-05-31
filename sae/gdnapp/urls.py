@@ -25,18 +25,17 @@ urlpatterns = [
     path('examen/updatetraitement/', views_examen.updatetraitement),
     path('examen/traitement/', views_examen.traitement),
 
+    path('ressources/index/', views_ressources.index),
+    path('ressources/ajout/', views_ressources.ajout),
+    path('ressources/update/', views_ressources.update),
+    path('ressources/delete/', views_ressources.delete),
+    path('ressources/traitement/', views_ressources.traitement),
+    path('ressources/updatetraitement/', views_ressources.updatetraitement),
 
-    path('ressource/affichage/', views_ressources.ressource_affichage),
-    path('ressource/', views_ressources.ressource_list),
-    path('ressource/create/', views_ressources.ressource_create),
-    path('ressource/<int:id>/edit/', views_ressources.ressource_update),
-
-
-
-
-
-    path('enseignants/affichage', views_enseignants.enseignant_affichage),
-    path('enseignants/create/', views_enseignants.enseignant_create_or_update),
-    path('enseignants/<int:id>/edit/', views_enseignants.enseignant_create_or_update),
-    path('enseignants/<int:id>/', views_enseignants.enseignant_affichage),
+    path('enseignants/index/', views_enseignants.index),
+    path('enseignants/ajout/', views_enseignants.ajout),
+    path('enseignants/update/', views_enseignants.update),
+    path('enseignants/delete/', views_enseignants.delete),
+    path('enseignants/traitement/', views_enseignants.traitement),
+    path('enseignants/updatetraitement/', views_enseignants.updatetraitement),
 ]
