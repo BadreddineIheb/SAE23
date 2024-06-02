@@ -1,14 +1,16 @@
 {% extends 'main.html' %}
 
 {% block title %}
-Ajouter Ressource
+Formulaire de saisie
 {% endblock %}
 
 {% block content %}
-    <h1>Ajouter une Ressource</h1>
+    <h1>Saisie d'une nouvelle ressource</h1>
     <form method="post" action="/gdnapp/ressource/traitement/">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Ajouter</button>
+
+          {% csrf_token %}
+          {{form.as_ul}}
+    <input type="submit" value="envoyez les données"/>
     </form>
+
 {% endblock %}

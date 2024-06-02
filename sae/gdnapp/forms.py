@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from . import models
 
-class EtudForm(ModelForm):
+class EtudiantForm(ModelForm):
     class Meta :
         model = models.Etudiant
         fields = ('nom', 'prenom', 'groupe', 'photo', 'email')
@@ -15,10 +15,11 @@ class EtudForm(ModelForm):
         }
 
 class UEForm(ModelForm):
-    class Meta :
+    class Meta:
         model = models.UE
-        fields = ('nom', 'semestre', 'credit')
+        fields = ('code','nom', 'semestre', 'credit')
         labels = {
+            'code': _('Code '),
             'nom' : _('Nom de l\'unité d\'enseignement'),
             'semestre' : _('Semestre dans lequel cette UE est présente'),
             'credit' : _('Crédit ECTS que donne cet UE'),

@@ -12,9 +12,10 @@
 
 <aside id="sidebar"></aside>
 {% block sidebar %}
+<br>
 <nav>
-    <a href ="/gdnapp/etudiant/affichage"> Etudiant</a>
-    <a href ="/gdnapp/UE/affichage"> UE</a>
+    <a href ="/gdnapp/etudiant/index"> Etudiant</a>
+    <a href ="/gdnapp/UE/index"> UE</a>
     <a href ="/gdnapp/ressource/index"> Ressources</a>
     <a href ="/gdnapp/enseignant/index"> Enseignants</a>
     <a href ="/gdnapp/examen/index"> Examen</a>
@@ -24,12 +25,13 @@
 {% endblock %}
 </aside>
 
+<br>
 
-
-
+<section>
 {% block content %}
 contenu
 {% endblock %}
-
+    <br>
+</section>
 </body>
 </html>

@@ -5,9 +5,12 @@ Formulaire de saisie
 {% endblock %}
 
 {% block content %}
-<form method="post" action="/gdnapp/etudiant/affichage/">
-{% csrf_token %}
-{{ form.as_ul }}
-<input type="submit" value="envoyer">
-</form>
+    <h1>Saisie d'une nouvelle étudiant</h1>
+    <form method="post" action="/gdnapp/etudiant/traitement/">
+
+          {% csrf_token %}
+          {{form.as_ul}}
+    <input type="submit" value="envoyez les données"/>
+    </form>
+
 {% endblock %}

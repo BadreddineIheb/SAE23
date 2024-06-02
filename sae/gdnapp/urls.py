@@ -3,13 +3,19 @@ from django.urls import path
 from . import views_enseignants, views_UE, views_ressources, views_etudiant, views_notes, views_examen
 
 urlpatterns = [
+    path('etudiant/index/', views_etudiant.index),
     path('etudiant/ajout/', views_etudiant.ajout),
-    path('etudiant/affichage/', views_etudiant.affichage),
+    path('etudiant/update/<int:id>/', views_etudiant.update),
+    path('etudiant/delete/<int:id>/', views_etudiant.delete),
+    path('etudiant/updatetraitement/<int:id>/', views_etudiant.updatetraitement),
+    path('etudiant/traitement/', views_etudiant.traitement),
 
-
-
-
-
+    path('UE/index/', views_UE.index),
+    path('UE/ajout/', views_UE.ajout),
+    path('UE/update/<int:id>/', views_UE.update),
+    path('UE/delete/<int:id>/', views_UE.delete),
+    path('UE/updatetraitement/<int:id>/', views_UE.updatetraitement),
+    path('UE/traitement/', views_UE.traitement),
 
     path('notes/index/', views_notes.index),
     path('notes/ajout/', views_notes.ajout),
@@ -34,8 +40,8 @@ urlpatterns = [
 
     path('enseignant/index/', views_enseignants.index),
     path('enseignant/ajout/', views_enseignants.ajout),
-    path('enseignant/update/', views_enseignants.update),
-    path('enseignant/delete/', views_enseignants.delete),
+    path('enseignant/update/<int:id>/', views_enseignants.update),
+    path('enseignant/delete/<int:id>/', views_enseignants.delete),
     path('enseignant/traitement/', views_enseignants.traitement),
-    path('enseignant/updatetraitement/', views_enseignants.updatetraitement),
+    path('enseignant/updatetraitement/<int:id>/', views_enseignants.updatetraitement),
 ]

@@ -1,12 +1,12 @@
 {% extends 'main.html' %}
 
 {% block title %}
-Formulaire de mise à jour
+Formulaire de saisie
 {% endblock %}
 
 {% block content %}
-    <h1>Saisie de la mise a jour des ressources :</h1>
-    <form method="post" action="/gdnapp/ressource/updatetraitement/{{id}}/">
+    <h1>Saisie d'une nouvelle Unité d'Enseignement</h1>
+    <form method="post" action="/gdnapp/UE/traitement/">
 
           {% csrf_token %}
           {{form.as_ul}}

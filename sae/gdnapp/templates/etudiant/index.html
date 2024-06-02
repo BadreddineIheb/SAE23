@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Accueil
+{% endblock %}
+
+{% block content %}
+    <br><br>
+<a href="/gdnapp/etudiant/ajout/">Ajouter une étudiant</a>
+<a href="/gdnapp/">Retour au menu</a>
+<h1>Voici toutes les étudiants : </h1>
+<ol style="list-style-type:none;">
+    {% for w in liste %}
+    <li>{{w}} <br><br> <a href="/gdnapp/etudiant/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/etudiant/delete/{{w.id}}/">supprimer</a></li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

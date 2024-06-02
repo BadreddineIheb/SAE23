@@ -5,8 +5,8 @@ Formulaire de mise à jour
 {% endblock %}
 
 {% block content %}
-    <h1>Saisie de la mise a jour des ressources :</h1>
-    <form method="post" action="/gdnapp/ressource/updatetraitement/{{id}}/">
+    <h1>Saisie de la mise a jour des UE :</h1>
+    <form method="post" action="/gdnapp/UE/updatetraitement/{{id}}/">
 
           {% csrf_token %}
           {{form.as_ul}}

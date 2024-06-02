@@ -6,7 +6,7 @@ Formulaire de mise à jour
 
 {% block content %}
     <h1>Saisie de la mise a jour des enseignants :</h1>
-    <form method="post" action="/gdnapp/enseignant/updatetraitement/{{id}}">
+    <form method="post" action="/gdnapp/enseignant/updatetraitement/{{id}}/">
 
           {% csrf_token %}
           {{form.as_ul}}

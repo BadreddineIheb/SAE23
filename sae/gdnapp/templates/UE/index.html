@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Accueil
+{% endblock %}
+
+{% block content %}
+    <br><br>
+<a href="/gdnapp/UE/ajout/">Ajouter une UE</a>
+<a href="/gdnapp/">Retour au menu</a>
+<h1>Voici toutes les unités d'enseignements :</h1>
+<ol style="list-style-type:none;">
+    {% for q in liste %}
+    <li>{{q}} <br><br> <a href="/gdnapp/UE/update/{{q.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/UE/delete/{{q.id}}/">supprimer</a></li>
+    {% endfor %}
+</ol>
+
+{% endblock %}

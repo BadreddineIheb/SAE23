@@ -1,18 +1,18 @@
 {% extends 'main.html' %}
 
 {% block title %}
-Accueil Ressources
+Accueil
 {% endblock %}
 
 {% block content %}
-    <h1>Liste des Ressources</h1>
-    <a href="/gdnapp/ressource/ajout/">Ajouter une ressource</a>
-    <ol>
-        {% for ressource in liste %}
-            <li>{{ ressource.code_ressource }} - {{ ressource.nom }} <br>
-                <a href="/gdnapp/ressource/update/{{ ressource.id }}">Mise à jour</a>
-                <a href="/gdnapp/ressource/delete/{{ ressource.id }}">Supprimer</a>
-            </li>
-        {% endfor %}
-    </ol>
+    <br><br>
+<a href="/gdnapp/ressource/ajout/">Ajouter une ressources</a>
+<a href="/gdnapp/">Retour au menu</a>
+<h1>Voici toutes les ressources : </h1>
+<ol style="list-style-type:none;">
+    {% for w in liste %}
+    <li>{{w}} <br><br> <a href="/gdnapp/ressource/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/ressource/delete/{{w.id}}/">supprimer</a></li>
+    {% endfor %}
+</ol>
+
 {% endblock %}

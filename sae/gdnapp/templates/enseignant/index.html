@@ -5,12 +5,14 @@ Accueil
 {% endblock %}
 
 {% block content %}
-    <h1>Voici toutes les enseignants</h1>
-<a href="/gdnapp/enseignant/ajout/">Ajouter un examen</a>
+<br><br>
+<a href="/gdnapp/enseignant/ajout/">Ajouter une enseignant</a>
 <a href="/gdnapp/">Retour au menu</a>
-<ol>
-    {% for l in liste %}
-    <li>{{l}} <br><br><a href="/gdnapp/enseignant/update/{{l.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/enseignant/delete/{{l.id}}/">supprimer</a></li>
+
+<h1>Voici toutes les enseignants :</h1>
+<ol style="list-style-type:none;">
+    {% for e in liste %}
+    <li>{{e}} <br><br> <a href="/gdnapp/enseignant/update/{{e.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/enseignant/delete/{{e.id}}/">supprimer</a></li>
     {% endfor %}
 </ol>
 
