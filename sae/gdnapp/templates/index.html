@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="test.css">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{%static 'gdnapp/accueil.css' %}">
     <title>Accueil</title>
 </head>
 <body>
     <header>
         <h1> Bienvenue sur le gestionnaire de notes </h1>
-        <nav>
-            <ul>
-                <li><a href="#etudiant">Etudiants</a></li>
-                <li><a href="#enseignant">Enseignants</a></li>
-                <li><a href="#ressource">Ressources</a></li>
-                <li><a href="#UE">UE</a></li>
-                <li><a href="#exam">Examens</a></li>
-                <li><a href="#note">notes</a></li>
-            </ul>
-        </nav>
-    </header>   
+      <aside id="sidebar"></aside>
+{% block sidebar %}
+<br>
+<nav>
+    <a href="#etudiant">Etudiants</a>
+    <a href="#enseignant">Enseignants</a>
+    <a href="#ressource">Ressources</a>
+    <a href="#UE">UE</a>
+    <a href="#exam">Examens</a>
+    <a href="#note">notes</a>
+</nav>
+
+{% endblock %}
+</aside><br>
+    </header>
     <main>
         <div class="intro">
             <p> Ce site vous permettra de gérer un gestionnaire de notes en y ajoutant, modifiant, supprimant les différents étudiants, enseignants, ressources, unitées d'enseignement, examens et notes nécessaire a ce gestionnaire. </p>
             <p> Vous trouverez dans les différentes sections ci-dessous les informations nécessaires pour chaque catégorie, tout d'abord il faudra ajouter les enseignants et étudiants, vous pourrez ensuite ajouter les ressources et unités d'enseignements pour enfin finir les examens puis pour finir les notes</p>
         </div>
+      <br>
         <div class="sections">
             <section class="personnes">
                 <h2> 1ère étape : les étudiants et enseignants</h2>
@@ -36,12 +42,12 @@
                         <li>Son prénom</li>
                         <li>Son groupe</li>
                         <li>Sa photo</li>
-                        <li>Son adresse mail</li>                    
+                        <li>Son adresse mail</li>
                     </ul>
                     <p>Ou bien vous pourrez afficher la liste de tout ceux déjà inscrits, via cette liste vous pourrez modifier ou supprimer chaque étudiant individuellement.</p>
                     <ul>
-                        <li><a href="etudiant/ajout.html">Ajout d'un étudiant</a></li>
-                        <li><a href="etudiant/index.html"> Liste des étudiant inscrits</a></li>
+                        <li><a href="etudiant/ajout/">Ajout d'un étudiant</a></li><br>
+                        <li><a href="etudiant/index/"> Liste des étudiant inscrits</a></li>
                     </ul>
                 </article>
                 <article id="enseignant">
@@ -49,15 +55,16 @@
                     <p> Dans cette section vous pourrez ajouter un nouvel enseignant en y indiquant : </p>
                     <ul>
                         <li>Son nom</li>
-                        <li>Son prénom</li>                 
+                        <li>Son prénom</li>
                     </ul>
                     <p>Ou bien vous pourrez afficher la liste de tout ceux déjà ajoutés, via cette liste vous pourrez modifier ou supprimer chaque enseignant individuellement.</p>
                     <ul>
-                        <li><a href="enseignant/ajout.html">Ajout d'un enseignant</a></li>
-                        <li><a href="enseignant/index.html"> Liste des enseignant ajoutés</a></li>
+                        <li><a href="enseignant/ajout/">Ajout d'un enseignant</a></li><br>
+                        <li><a href="enseignant/index/"> Liste des enseignant ajoutés</a></li>
                     </ul>
                 </article>
             </section>
+          <br>
             <section class="cours">
                 <h2> 2ème étape : les différentes ressources et "UE"</h2>
                 <article id="ressources">
@@ -67,29 +74,30 @@
                         <li>Leurs code de ressource</li>
                         <li>Leurs nom</li>
                         <li>Leurs coefficient</li>
-                        <li>Un petit descriptif de la ressource</li>                 
+                        <li>Un petit descriptif de la ressource</li>
                     </ul>
                     <p>Ou bien vous pourrez afficher la liste de toutes les ressources déjà ajoutées avec possibilité de les modifiées ou supprimer si nécessaire.</p>
                     <ul>
-                        <li><a href="ressource/ajout.html">Ajout d'une ressource</a></li>
-                        <li><a href="ressource/index.html"> Liste des ressources ajoutées</a></li>
+                        <li><a href="ressource/ajout/">Ajout d'une ressource</a></li><br>
+                        <li><a href="ressource/index/"> Liste des ressources ajoutées</a></li>
                     </ul>
                 </article>
-                <article id="enseignant">
+                <article id="UE">
                     <h3>Unités d'enseignements</h3>
                     <p> Dans cette section vous pourrez ajouter les différentes unitées d'enseignement de chaque semestres en y indiquant : </p>
                     <ul>
                         <li>Leur nom</li>
                         <li>Le semestre dans lequel elle est présente</li>
-                        <li>Le nombre de crédit ECTS qu'elle donne</li>                 
+                        <li>Le nombre de crédit ECTS qu'elle donne</li>
                     </ul>
                     <p>Ou bien vous pourrez afficher la liste de toutes les UE déjà ajoutées, vous pourrais ainsi les modifier ou supprimer si besoin.</p>
                     <ul>
-                        <li><a href="UE/ajout.html">Ajout d'un enseignant</a></li>
-                        <li><a href="UE/index.html"> Liste des enseignant ajoutés</a></li>
+                        <li><a href="UE/ajout/">Ajout d'une UE</a></li><br>
+                        <li><a href="UE/index/"> Liste des UE</a></li>
                     </ul>
                 </article>
             </section>
+          <br>
             <section class="notation">
                 <h2> 3ème étape : examens et notes </h2>
                 <article id="exam">
@@ -99,12 +107,12 @@
                         <li>Le nom du professeur ayant fait l'examen</li>
                         <li>Le titre de l'examen</li>
                         <li>La date a laqulle il a été fait</li>
-                        <li>Le coefficient de cet examen</li>                   
+                        <li>Le coefficient de cet examen</li>
                     </ul>
                     <p>Ou bien vous pourrez afficher la liste de tout les examens déjà ajoutés, afin de les lister, ou bien les modifier ou supprimer. </p>
                     <ul>
-                        <li><a href="examen/ajout.html">Ajout d'un étudiant</a></li>
-                        <li><a href="examen/index.html"> Liste des étudiant inscrits</a></li>
+                        <li><a href="examen/ajout/">Ajout d'un examen</a></li><br>
+                        <li><a href="examen/index/"> Liste des examen</a></li>
                     </ul>
                 </article>
                 <article id="note">
@@ -113,20 +121,22 @@
                     <ul>
                         <li>L'examen en question</li>
                         <li>L'étudiant en question</li>
-                        <li>La note obtenue</li>  
-                        <li>Une appreciation suplémentaire</li>               
+                        <li>La note obtenue</li>
+                        <li>Une appreciation suplémentaire</li>
                     </ul>
                     <p>Ou bien vous pourrez afficher la liste de chaque notes déjà inscrites, avec tout comme le reste, possibilité de modification ou suppression de chacune. </p>
                     <ul>
-                        <li><a href="notes/ajout.html">Ajout d'un enseignant</a></li>
-                        <li><a href="notes/index.html"> Liste des enseignant ajoutés</a></li>
+                        <li><a href="notes/ajout/">Ajout d'une note</a></li><br>
+                        <li><a href="notes/index/"> Liste des notes ajoutées</a></li>
                     </ul>
                 </article>
             </section>
         </div>
     </main>
+    <br>
     <footer>
         <p> Vous pouvez désormais gérer au mieux chaque aspects de ce gestionnaire de notes, et ajouter au fur et à mesure les nouvelles infomations nécessaire à la gestion et l'organisation de chaque notes.</p>
     </footer>
+<br>
 </body>
 </html>

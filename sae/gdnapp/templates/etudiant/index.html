@@ -11,7 +11,13 @@ Accueil
 <h1>Voici toutes les étudiants : </h1>
 <ol style="list-style-type:none;">
     {% for w in liste %}
-    <li>{{w}} <br><br> <a href="/gdnapp/etudiant/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/etudiant/delete/{{w.id}}/">supprimer</a></li>
+    <li>{{w}}
+        {% if w.photo %}
+            <img class="etudiant" src="{{ w.photo.url }}" alt="photo de l'étudiant">
+        {% else %}
+            <p>Aucune photo disponible</p>
+        {% endif %}
+        <br> <a href="/gdnapp/etudiant/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/etudiant/delete/{{w.id}}/">supprimer</a></li><br>
     {% endfor %}
 </ol>
 

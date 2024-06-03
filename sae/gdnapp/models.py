@@ -8,12 +8,12 @@ class Etudiant(models.Model):
     nom = models.CharField(max_length=25)
     prenom = models.CharField(max_length=25)
     groupe = models.CharField(max_length=25)
-    photo = models.ImageField(blank=True)
+    photo = models.ImageField(upload_to='photo/', blank=True)
     email = models.EmailField(max_length=100, blank=True)
     # num_etud = models.ForeignKey("etudiant", on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        chaine = f"L'étudiant {self.nom} {self.prenom}{self.photo} du groupe {self.groupe} avec l'email {self.email}"
+        chaine = f"L'étudiant {self.nom} {self.prenom} du groupe {self.groupe} avec l'email {self.email}"
         return chaine
 
     def dico(self):

@@ -1,14 +1,16 @@
 from django.urls import path
 
-from . import views_enseignants, views_UE, views_ressources, views_etudiant, views_notes, views_examen
+from . import views_enseignants, views_UE, views_ressources, views_etudiant, views_notes, views_examen,views_accueil
 
 urlpatterns = [
+    path('', views_accueil.index),
     path('etudiant/index/', views_etudiant.index),
     path('etudiant/ajout/', views_etudiant.ajout),
     path('etudiant/update/<int:id>/', views_etudiant.update),
     path('etudiant/delete/<int:id>/', views_etudiant.delete),
     path('etudiant/updatetraitement/<int:id>/', views_etudiant.updatetraitement),
     path('etudiant/traitement/', views_etudiant.traitement),
+
 
     path('UE/index/', views_UE.index),
     path('UE/ajout/', views_UE.ajout),

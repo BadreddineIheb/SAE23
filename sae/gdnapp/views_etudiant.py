@@ -9,8 +9,12 @@ def index(request):
 
 def ajout(request):
     if request.method == "POST":
-        form = EtudiantForm(request)
-        return render(request, "netudiant/ajout.html", {"form":form})
+        form = EtudiantForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return render(request, "netudiant/ajout.html", {"form":form})
+        else:
+            print(form.errors)
     else:
         form = EtudiantForm()
         return render(request, "etudiant/ajout.html", {"form": form})

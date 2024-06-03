@@ -6,7 +6,7 @@ Formulaire de saisie
 
 {% block content %}
     <h1>Saisie d'une nouvelle étudiant</h1>
-    <form method="post" action="/gdnapp/etudiant/traitement/">
+    <form method="post"  action="/gdnapp/etudiant/traitement/" enctype="multipart/form-data">
 
           {% csrf_token %}
           {{form.as_ul}}
