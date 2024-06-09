@@ -1,7 +1,13 @@
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from . import models
+from django import forms
 
+class UploadFileForm(forms.Form):
+    fichier = forms.FileField()
+
+class Fichiernotes(forms.Form):
+    fichiernotes = forms.FileField()
 class EtudiantForm(ModelForm):
     class Meta :
         model = models.Etudiant
@@ -39,9 +45,9 @@ class NotesForm(ModelForm):
 class ExamenForm(ModelForm):
     class Meta :
         model = models.Examen
-        fields = ( 'enseignant','titre', 'date', 'coefficient')
+        fields = ( 'id_exam','titre', 'date', 'coefficient')
         labels = {
-            'enseignant': _('Enseignant'),
+            'id_exam': _('N°examen'),
             'titre': _('titre'),
             'date': _('date'),
             'coefficient': _('Coefficient')
@@ -50,7 +56,7 @@ class ExamenForm(ModelForm):
 class RessourcesForm(ModelForm):
     class Meta:
         model = models.Ressources
-        fields = ('code_ressource', 'nom', 'descriptif', 'coefficient')
+        fields = ('UE','code_ressource', 'nom', 'descriptif', 'coefficient')
 
 class EnseignantsForm(ModelForm):
     class Meta:

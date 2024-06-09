@@ -1,7 +1,12 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
+class Fichiernotes(forms.Form):
+    fichiernotes = forms.FileField()
 
+class UploadFileForm(forms.Form):
+    fichier = forms.FileField()
 # model de étudiant
 
 class Etudiant(models.Model):
@@ -27,7 +32,7 @@ class UE(models.Model) :
     # code = models.ForeignKey("UE", on-delete=models.CASCADE, default=None)
 
     def __str__(self):
-        chaine = f"L'unité d'enseignement avec le code {self.code}, {self.nom} présente au {self.semestre} semestre donne {self.credit} crédits ECTS"
+        chaine = f"L'unité d'enseignement {self.code} {self.nom} présente au {self.semestre} semestre donne {self.credit} crédits ECTS"
         return chaine
 
     def dico(self):
@@ -53,14 +58,17 @@ class Notes(models.Model):
 
 # model des ressources
 class Ressources(models.Model):
+    UE = models.ForeignKey("ue", on_delete=models.CASCADE, default=None, blank=True)
     code_ressource = models.CharField(max_length=100)
     nom = models.CharField(max_length=100)
     descriptif = models.TextField(null=True, blank=True)
     coefficient = models.FloatField(blank=False)
 
     def __str__(self):
-        return f"{self.code_ressource} - {self.nom}"
+        return f" Dans {self.UE} il y a {self.code_ressource} - {self.nom} a un coefficient de {self.coefficient}. La description est {self.descriptif}"
 
+    def dico(self):
+        return {"UE":self.UE,"code_ressource":self.code_ressource,"nom": self.nom, "descriptif": self.descriptif, "coefficient": self.coefficient}
 
 
 class Enseignants(models.Model):
@@ -76,14 +84,14 @@ class Enseignants(models.Model):
 # model de examen
 
 class Examen(models.Model):
-    enseignant = models.ForeignKey("enseignants", on_delete=models.CASCADE, default=None, blank=True)
+    id_exam =models.IntegerField(blank=True)
     titre = models.CharField(max_length=100)
     date = models.DateField(blank=True, null=True)
     coefficient = models.FloatField(blank=False)
 
     def __str__(self):
-        chaine = f"L'examen du {self.enseignant} qui s'intitule {self.titre} en date de  {self.date} avec un coefficient de {self.coefficient}"
+        chaine = f"L'examen n°{self.id_exam} qui s'intitule {self.titre} en date de  {self.date} avec un coefficient de {self.coefficient}"
         return chaine
 
     def dico(self):
-        return {"id":self.enseignant, "titre":self.titre, "date":self.date, "coefficient":self.coefficient} #"continent":self.continent}
+        return {"id":self.id_exam, "titre":self.titre, "date":self.date, "coefficient":self.coefficient} #"continent":self.continent}

@@ -10,6 +10,7 @@ urlpatterns = [
     path('etudiant/delete/<int:id>/', views_etudiant.delete),
     path('etudiant/updatetraitement/<int:id>/', views_etudiant.updatetraitement),
     path('etudiant/traitement/', views_etudiant.traitement),
+    path('etudiant/upload/', views_etudiant.upload_file),
 
 
     path('UE/index/', views_UE.index),
@@ -25,6 +26,7 @@ urlpatterns = [
     path('notes/delete/<int:id>/', views_notes.delete),
     path('notes/updatetraitement/<int:id>/', views_notes.updatetraitement),
     path('notes/traitement/', views_notes.traitement),
+    path('notes/upload/', views_notes.upload_file),
 
     path('examen/index/', views_examen.index),
     path('examen/ajout/', views_examen.ajout),

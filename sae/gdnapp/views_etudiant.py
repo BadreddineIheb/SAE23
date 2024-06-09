@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .forms import EtudiantForm
+from .forms import EtudiantForm, UploadFileForm
 from .import models
+import csv
+from io import TextIOWrapper
 
 
 def index(request):
@@ -21,7 +23,10 @@ def ajout(request):
 
 def update(request, id):
     etudiant = models.Etudiant.objects.get(pk=id)
-    form = EtudiantForm(etudiant.dico())
+    form = EtudiantForm(request.POST or None, request.FILES or None, instance=etudiant)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/gdnapp/etudiant/index/")
     return render(request, "etudiant/update.html", {"form": form, "id": id})
 
 def delete(request, id):
@@ -47,3 +52,19 @@ def updatetraitement(request,id):
         return HttpResponseRedirect("/gdnapp/etudiant/index/")
     else:
         return render(request,"etudiant/ajout.html",{"form":wform,"id": id})
+
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['fichier']
+            decoded_file = TextIOWrapper(file.file, encoding='utf-8')
+            reader = csv.reader(decoded_file)
+            next(reader)  # skip header row if there is one
+            for row in reader:
+                nom, prenom, groupe, email = row[0], row[1], row[2], row[3] if len(row) > 3 else ''
+                models.Etudiant.objects.create(nom=nom, prenom=prenom, groupe=groupe, email=email)
+            return HttpResponseRedirect("/gdnapp/etudiant/index/")
+    else:
+        form = UploadFileForm()
+    return render(request, 'etudiant/upload.html', {'form': form})
