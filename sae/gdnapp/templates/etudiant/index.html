@@ -18,7 +18,7 @@ Accueil
         {% else %}
             <p>Aucune photo disponible</p>
         {% endif %}
-        <br> <a href="/gdnapp/etudiant/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/etudiant/delete/{{w.id}}/">supprimer</a></li><br>
+        <br> <a href="/gdnapp/etudiant/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/etudiant/delete/{{w.id}}/">supprimer</a> <a href="/gdnapp/etudiant/{{w.id}}/releve/">relevé de note</a>&nbsp</li><br>
     {% endfor %}
 </ol>
 

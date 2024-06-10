@@ -1,9 +1,13 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from .forms import NotesForm,Fichiernotes
 from .import models
 import csv
 from io import TextIOWrapper
 
+def releve_notes(request, etudiant_id):
+    etudiant = get_object_or_404(models.Etudiant, pk=etudiant_id)
+    notes = models.Notes.objects.filter(etudiant=etudiant)
+    return render(request, 'notes/releve_notes.html', {'etudiant': etudiant, 'notes': notes})
 
 def index(request):
     liste = list(models.Notes.objects.all())

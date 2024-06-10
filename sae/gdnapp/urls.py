@@ -12,6 +12,7 @@ urlpatterns = [
     path('etudiant/traitement/', views_etudiant.traitement),
     path('etudiant/upload/', views_etudiant.upload_file),
 
+    path('etudiant/<int:etudiant_id>/releve/', views_notes.releve_notes),
 
     path('UE/index/', views_UE.index),
     path('UE/ajout/', views_UE.ajout),
