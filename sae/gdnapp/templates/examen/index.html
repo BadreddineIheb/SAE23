@@ -11,7 +11,7 @@ Accueil
 <h1>Voici toutes les examens : </h1>
 <ol style="list-style-type:none;">
     {% for e in liste %}
-    <li>{{e}} <br><br> <a href="/gdnapp/examen/update/{{e.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/examen/delete/{{e.id}}/">supprimer</a></li>
+    <li>{{e}} <br><br> <a href="/gdnapp/examen/update/{{e.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/examen/delete/{{e.id}}/">supprimer</a></li><br>
     {% endfor %}
 </ol>
 

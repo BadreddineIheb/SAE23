@@ -11,7 +11,7 @@ Accueil
 <h1>Voici toutes les ressources : </h1>
 <ol style="list-style-type:none;">
     {% for w in liste %}
-    <li>{{w}} <br><br> <a href="/gdnapp/ressource/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/ressource/delete/{{w.id}}/">supprimer</a></li>
+    <li>{{w}} <br><br> <a href="/gdnapp/ressource/update/{{w.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/ressource/delete/{{w.id}}/">supprimer</a></li><br>
     {% endfor %}
 </ol>
 

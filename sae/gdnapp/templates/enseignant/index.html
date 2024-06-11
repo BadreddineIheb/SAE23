@@ -12,7 +12,7 @@ Accueil
 <h1>Voici toutes les enseignants :</h1>
 <ol style="list-style-type:none;">
     {% for e in liste %}
-    <li>{{e}} <br><br> <a href="/gdnapp/enseignant/update/{{e.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/enseignant/delete/{{e.id}}/">supprimer</a></li>
+    <li>{{e}} <br><br> <a href="/gdnapp/enseignant/update/{{e.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/enseignant/delete/{{e.id}}/">supprimer</a></li><br>
     {% endfor %}
 </ol>
 

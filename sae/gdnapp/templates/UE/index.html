@@ -11,7 +11,7 @@ Accueil
 <h1>Voici toutes les unités d'enseignements :</h1>
 <ol style="list-style-type:none;">
     {% for q in liste %}
-    <li>{{q}} <br><br> <a href="/gdnapp/UE/update/{{q.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/UE/delete/{{q.id}}/">supprimer</a></li>
+    <li>{{q}} <br><br> <a href="/gdnapp/UE/update/{{q.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/UE/delete/{{q.id}}/">supprimer</a></li><br>
     {% endfor %}
 </ol>
 

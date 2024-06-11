@@ -12,7 +12,7 @@ Accueil
 <h1>Voici toutes les notes :</h1>
 <ol style="list-style-type:none;">
     {% for p in liste %}
-    <li>{{p}} <br><br> <a href="/gdnapp/notes/update/{{p.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/notes/delete/{{p.id}}/">supprimer</a></li>
+    <li>{{p}} <br><br> <a href="/gdnapp/notes/update/{{p.id}}/">mise à jour</a>&nbsp <a href="/gdnapp/notes/delete/{{p.id}}/">supprimer</a></li><br>
     {% endfor %}
 </ol>
 
