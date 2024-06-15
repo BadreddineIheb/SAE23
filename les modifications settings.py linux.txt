@@ -1,0 +1,19 @@
+Dans le fichier nano /projetdjango/src/sae/settings.py il faut mettre False au lieu de True 
+pour DEBUG = … pour la sécurité.
+
+Modification du lien static url :
+STATIC_URL = 'static/'
+STATIC_ROOT = '/projetdjango/site/public/static' #à rajouter 
+MEDIA_ROOT = '/projetdjango/site/public/media' #à rajouter
+
+On va modifier le fichier settings.py en le remplissant avec les informations du sql :
+DATABASES = { 
+'default': { 
+'ENGINE': 'django.db.backends.mysql', 
+'NAME': 'user', 
+'USER': 'toto',
+'PASSWORD': 'toto', 
+'HOST': '192.168.200.129',
+'PORT': '3306' 
+} 
+}

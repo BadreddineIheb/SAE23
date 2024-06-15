@@ -1,0 +1,28 @@
+3.2) Modification du fichier « 000-default.conf » :
+<VirtualHost *:80>
+ ErrorLog /projetdjango/site/logs/error.log # Toutes les erreurs générées par ce site seront enregistrées dans ce fichier.
+
+ CustomLog /projetdjango/site/logs/access.log combine # Le format combine inclut des informations détaillées telles que l'adresse IP du client, la requête, l'heure, etc.
+
+ <Directory /projetdjango/src/sae>
+ <Files wsgi.py> 
+ Require all granted # Cette directive permet à tous les utilisateurs d'accéder au fichier wsgi.py. Cela est nécessaire pour que mod_wsgi puisse exécuter ce fichier pour servir l'application Django.
+
+ </Files>
+ </Directory>
+ WSGIDaemonProcess user python-home=/projetdjango/venv python-path=/projetdjango/src/ 
+# Crée un processus de démon WSGI nommé user.
+ WSGIProcessGroup user # Associe ce groupe de processus au groupe de démon WSGI nommé user créer précédemment. Cela garantit que les requêtes sont traitées par ce groupe de processus.
+ WSGIScriptAlias / /projetdjango/src/sae/wsgi.py 
+# Cette directive associe l'URL racine (/) de l'hôte virtuel au script WSGI 
+de l'application Django. Elle indique à Apache de traiter toutes les requêtes HTTP à la racine du site en utilisant le fichier wsgi.py de l'application.
+
+</VirtualHost>
+
+ Donner le chemin des static à apache2 :
+Dans le fichier /etc/apache2/site-available/000-default.conf ajouter ceci :
+alias /static /projetdjango/site/public/static #crée un alias
+<Directory /projetdjango/site/public/static> 
+Require all granted 
+# Donne accès à tout le monde donc cela signifie que toutes les requêtes HTTP pour des fichiers dans  ce répertoire seront autorisées.
+</Directory>
